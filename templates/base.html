@@ -1,0 +1,235 @@
+{% load staticfiles %}
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+{#<title>{{ SITE_NAME }}</title>#}
+{#<meta name="keywords" content="{{ SITE_NAME }}" />#}
+{#<meta name="description" content="{{ SITE_DESC }}" />#}
+{% block title_description %}{% endblock %}
+<link href="{% static 'css/base.css' %}" rel="stylesheet">
+<link href="{% static 'css/index.css' %}" rel="stylesheet">
+{% block custom_css %}{% endblock %}
+<script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
+<script type="text/javascript" src="{% static 'js/sliders.js' %}"></script>
+<link href="{% static 'js//syntaxhighlighter/styles/shCore.css' %}" rel="stylesheet" type="text/css" />
+<link href="{% static 'js//syntaxhighlighter/styles/shThemeDefault.css' %}" rel="stylesheet" type="text/css" />
+<script src="{% static 'js/syntaxhighlighter/scripts/shCore.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/syntaxhighlighter/scripts/shAutoloader.js' %}" type="text/javascript"></script>
+<!--[if lt IE 9]>
+<script src="js/modernizr.js"></script>
+<![endif]-->
+{% block custom_js %}{% endblock %}
+</head>
+<body>
+<header>
+{#  <div class="logo">#}
+{#      <h1>{{ SITE_NAME }}</h1>#}
+{#      <p>{{ SITE_DESC }}</p>#}
+{#  </div>#}
+{#  <nav id="topnav" class="f_r">#}
+{#    <ul>#}
+{#      <a href="/">首页</a>#}
+{#      {% for category in category_list %}#}
+{#      <a href="{% url 'category' %}?cid={{ category.id }}">{{ category.name }}</a>#}
+{#      {% endfor %}#}
+{#    </ul>#}
+{#    <script src="{% static 'js/nav.js' %}"></script>#}
+{#  </nav>#}
+    <div class="headercenter">
+        <div class="logo f_l"> <a href="/"><h1>奔小跑</h1><p>少说多做，勤能补拙</p></a> </div>
+{#    <nav id="topnav" class="f_r">#}
+{#        <ul>#}
+{#            <a href="/">首页</a>#}
+{#            <a href="news.html" target="_blank">关于我</a>#}
+{#            <a href="p.html" target="_blank">文章</a>#}
+{#            <a href="a.html" target="_blank">心情</a>#}
+{#            <a href="c.html" target="_blank">相册</a>#}
+{#            <a href="b.html" target="_blank">留言</a>#}
+{#        </ul>#}
+{#        <script src="{% static 'js/nav.js' %}"></script>#}
+{#    </nav>#}
+
+        <div id="top_navigation" class="f_r">
+            <ul class="nav">
+                {% if current_menu == 'index' %}
+                <li> <a href="/" class="menu_current"> 首页 </a></li>
+                {% else %}
+                <li> <a href="/"> 首页 </a></li>
+                {% endif %}
+                {% if current_menu == 'list_category' %}
+                <li> <a href="/category/list" class="menu_current"> 分类 </a></li>
+                {% else %}
+                <li> <a href="/category/list"> 分类 </a></li>
+                {% endif %}
+                {% if current_menu == 'list_archive' %}
+                <li> <a href="/archive/list" class="menu_current"> 归档 </a></li>
+                {% else %}
+                <li> <a href="/archive/list"> 归档 </a></li>
+                {% endif %}
+                {% if current_menu == 'about' %}
+                <li> <a href="/about" class="menu_current"> 关于 </a></li>
+                {% else %}
+                <li> <a href="/about"> 关于 </a></li>
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</header>
+<article>
+  <div class="l_box f_l">
+      {% block left_content %}{% endblock %}
+  </div>
+  <div class="r_box f_r">
+{# ------ 暂先注释掉“关注我” ------ #}
+{#    <div class="tit01">#}
+{#      <h3>关注我</h3>#}
+{#      <div class="gzwm">#}
+{#        <ul>#}
+{#          <li><a class="xlwb" href="#" target="_blank">新浪微博</a></li>#}
+{#          <li><a class="txwb" href="#" target="_blank">腾讯微博</a></li>#}
+{#          <li><a class="rss" href="portal.php?mod=rss" target="_blank">RSS</a></li>#}
+{#          <li><a class="wx" href="mailto:admin@admin.com">邮箱</a></li>#}
+{#        </ul>#}
+{#      </div>#}
+{#    </div>#}
+{#    <!--tit01 end-->#}
+{# ------ /暂先注释掉“关注我” ------ #}
+
+
+{# ------ 暂先注释掉“浏览排行”、“评论排行”、“站长推荐” ------ #}
+{#    <div class="moreSelect" id="lp_right_select">#}
+{#      <script>#}
+{#window.onload = function ()#}
+{#{#}
+{#  var oLi = document.getElementById("tab").getElementsByTagName("li");#}
+{#  var oUl = document.getElementById("ms-main").getElementsByTagName("div");#}
+{##}
+{#  for(var i = 0; i < oLi.length; i++)#}
+{#  {#}
+{#    oLi[i].index = i;#}
+{#    oLi[i].onmouseover = function ()#}
+{#    {#}
+{#      for(var n = 0; n < oLi.length; n++) oLi[n].className="";#}
+{#      this.className = "cur";#}
+{#      for(var n = 0; n < oUl.length; n++) oUl[n].style.display = "none";#}
+{#      oUl[this.index].style.display = "block"#}
+{#    }#}
+{#  }#}
+{#}#}
+{#</script>#}
+{#      <div class="ms-top">#}
+{#        <ul class="hd" id="tab">#}
+{#          <li class="cur"><a href="/">浏览排行</a></li>#}
+{#          <li><a href="/">评论排行</a></li>#}
+{#          <li><a href="/">站长推荐</a></li>#}
+{#        </ul>#}
+{#      </div>#}
+{#      <div class="ms-main" id="ms-main">#}
+{#        <div style="display: block;" class="bd bd-news" >#}
+{#          <ul>#}
+{#            <li><a href="/" target="_blank">住在手机里的朋友</a></li>#}
+{#            <li><a href="/" target="_blank">教你怎样用欠费手机拨打电话</a></li>#}
+{#            <li><a href="/" target="_blank">原来以为，一个人的勇敢是，删掉他的手机号码...</a></li>#}
+{#            <li><a href="/" target="_blank">手机的16个惊人小秘密，据说99.999%的人都不知</a></li>#}
+{#            <li><a href="/" target="_blank">你面对的是生活而不是手机</a></li>#}
+{#            <li><a href="/" target="_blank">豪雅手机正式发布! 在法国全手工打造的奢侈品</a></li>#}
+{#          </ul>#}
+{#        </div>#}
+{#        <div  class="bd bd-news">#}
+{#          <ul>#}
+{#            {% for article in article_comment_list %}#}
+{#            <li><a href="/" target="_blank">{{ article.title | slice:':15' }}</a></li>#}
+{#            {% endfor %}#}
+{#          </ul>#}
+{#        </div>#}
+{#        <div class="bd bd-news">#}
+{#          <ul>#}
+{#            <li><a href="/" target="_blank">手机的16个惊人小秘密，据说99.999%的人都不知</a></li>#}
+{#            <li><a href="/" target="_blank">你面对的是生活而不是手机</a></li>#}
+{#            <li><a href="/" target="_blank">住在手机里的朋友</a></li>#}
+{#            <li><a href="/" target="_blank">豪雅手机正式发布! 在法国全手工打造的奢侈品</a></li>#}
+{#            <li><a href="/" target="_blank">教你怎样用欠费手机拨打电话</a></li>#}
+{#            <li><a href="/" target="_blank">原来以为，一个人的勇敢是，删掉他的手机号码...</a></li>#}
+{#          </ul>#}
+{#        </div>#}
+{#      </div>#}
+{#      <!--ms-main end -->#}
+{#    </div>#}
+{#    <!--切换卡 moreSelect end -->#}
+{# ------ /暂先注释掉“浏览排行”、“评论排行”、“站长推荐” ------ #}
+
+    <div class="cloud">
+        <h3>标签云</h3>
+        <ul>
+            {# <li><a href="/">个人博客</a></li> #}
+            {# <li><a href="/">web开发</a></li> #}
+            {# <li><a href="/">前端设计</a></li> #}
+            {# <li><a href="/">Html</a></li> #}
+            {# <li><a href="/">CSS3</a></li> #}
+            {# <li><a href="/">Html5+css3</a></li> #}
+            {# <li><a href="/">百度</a></li> #}
+            {# <li><a href="/">Javasript</a></li> #}
+            {# <li><a href="/">web开发</a></li> #}
+            {# <li><a href="/">前端设计</a></li> #}
+            {# <li><a href="/">Html</a></li> #}
+            {# <li><a href="/">CSS3</a></li> #}
+            {# <li><a href="/">Html5+css3</a></li> #}
+            {# <li><a href="/">百度</a></li> #}
+
+            {% for tag in tag_list %}
+            <li><a href="/tag/{{ tag.id }}">{{ tag.name }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
+    <div class="tuwen">
+      <h3>文章归档</h3>
+      <ul>
+        {% for archive in archive_list %}
+        <li>
+          <p><span class="tutime font-size-18"><a href="/archive/{{ archive | slice:':4' }}/{{ archive | slice:'5:7' }}">{{ archive }}</a></span></p>
+        </li>
+        {% endfor %}
+      </ul>
+    </div>
+    <div class="links">
+      <h3>友情链接</h3>
+      <ul>
+        <li><a href="http://www.benxiaopao.com" target="_blank">奔小跑</a></li>
+        {# <li><a href="/">前端设计</a></li> #}
+        {# <li><a href="/">Html</a></li> #}
+        {# <li><a href="/">CSS3</a></li> #}
+        {# <li><a href="/">Html5+css3</a></li> #}
+        {# <li><a href="/">百度</a></li> #}
+      </ul>
+    </div>
+  </div>
+  <!--r_box end -->
+</article>
+<footer>
+    <p class="ft-copyright">{{ SITE_NAME }} 京ICP备12039063号-2</p>
+    <div id="tbox"> <a id="togbook" href="/"></a> <a id="gotop" href="javascript:void(0)"></a> </div>
+    <script type="text/javascript">gotop.onclick = function(){document.body.scrollTop = document.documentElement.scrollTop = 0;}</script>
+    <!--
+        SyntaxHighlighter.autoloader()应该在doc都载入完以后再执行。
+        如果引用了jQuery，可以放$(document).ready()里，这样的话放在header里也没问题。
+        但如果原生js，要不放body的onload里，要不放页面最后，比如在、随便找个地方放，就能看到效果了
+     -->
+    <script type="text/javascript">
+        window.onload = function(){
+            SyntaxHighlighter.autoloader(
+                'java            {% static "js/syntaxhighlighter/scripts/shBrushJava.js" %}',
+                'php             {% static "js/syntaxhighlighter/scripts/shBrushPhp.js" %}',
+                'html xml        {% static "js/syntaxhighlighter/scripts/shBrushXml.js" %}',
+                'css            {% static "js/syntaxhighlighter/scripts/shBrushCss.js" %}',
+                'js jscript javascript        {% static "js/syntaxhighlighter/scripts/shBrushJScript.js" %}',
+                'bash shell           {% static "js/syntaxhighlighter/scriptsshBrushBash.js" %}',
+                'sql            {% static "js/syntaxhighlighter/scripts/shBrushSql.js" %}',
+                'c cpp          {% static "js/syntaxhighlighter/scripts/shBrushCpp.js" %}'
+            );
+            SyntaxHighlighter.all();//启动解析
+        }
+    </script>
+</footer>
+</body>
+</html>

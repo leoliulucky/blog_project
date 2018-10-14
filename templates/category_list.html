@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{# ---标题、关键词、描述--- #}
+{% block title_description %}
+<title>文章分类 | {{ SITE_NAME }}</title>
+<meta name="keywords" content="技术,知识,学习,成长" />
+<meta name="description" content="共计{{ all_category_list|length }}个分类" />
+{% endblock %}
+{# ---/标题、关键词、描述--- #}
+{% block left_content %}
+<div class="topnews" style="margin:0">
+    <h2>共计{{ all_category_list|length }}个分类</h2>
+    <div class="blogs">
+        <ul>
+        {% for category in all_category_list %}
+        <li style="list-style: circle;margin: 10px 15px;padding: 10px 0;"><a href="/category/{{ category.id }}" style="border-bottom: 1px solid #999">{{ category.name }}</a></li>
+        {% endfor %}
+        </ul>
+    </div>
+</div>
+{% endblock %}

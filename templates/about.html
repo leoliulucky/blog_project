@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{# ---标题、关键词、描述--- #}
+{% block title_description %}
+<title>关于我 | {{ SITE_NAME }}</title>
+<meta name="keywords" content="技术,知识,学习,成长" />
+<meta name="description" content="{{ SITE_DESC }}" />
+{% endblock %}
+{# ---/标题、关键词、描述--- #}
+{% block left_content %}
+<div class="topnews" style="margin:0">
+    <h2>关于</h2>
+    <div class="blogs">
+        奔小跑，程序员，目前供职于某米公司。<br/>
+        热爱工作，热爱生活。<br/>
+        少说多做，勤能补拙。<br/>
+        拥抱变化。<br/>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{# ---标题、关键词、描述--- #}
+{% block title_description %}
+<title>{{ tag.name }} | 文章标签</title>
+<meta name="keywords" content="技术,知识,学习,成长" />
+<meta name="description" content="{{ tag.name }}" />
+{% endblock %}
+{# ---/标题、关键词、描述--- #}
+{% block left_content %}
+    <div class="topnews" style="margin:0">
+      <h2>标签：{{ tag.name }}</h2>
+      {% for article in article_list %}
+      <div class="blogs">
+        <ul>
+          <h3><a href="/blog/{{ article.show_number }}">{{ article.title }}</a></h3>
+          <p>{{ article.desc }}</p>
+          <p class="autor">
+              <span class="postmeta_category" style="float:left;">
+                  <a href="/category/{{ article.category.id }}">{{ article.category.name }}</a>&nbsp;
+              </span>
+              <span class="lm f_l">
+                  {% for tag in article.tag.all %}
+                  <a href="/">{{ tag.name }}</a>&nbsp;
+                  {% endfor %}
+              </span>
+              <span class="dtime f_l">{{ article.date_publish | date:'Y-m-d' }}</span>
+              <span class="viewnum f_r"><a href="/blog/{{ article.show_number }}">阅读全文</a></span>
+          </p>
+        </ul>
+      </div>
+      {% endfor %}
+    </div>
+    {% include 'pagination.html' %}
+{% endblock %}
