@@ -37,7 +37,8 @@ def global_setting(request):
 def index(request):
     try:
         # 最新文章数据
-        article_list = Article.objects.all()
+        # article_list = Article.objects.all()
+        article_list = Article.objects.filter(is_publish=True)
         article_list = getPage(request, article_list)
         # 文章归档
         # 1、先要去获取到文章中有的 年份-月份  2015/06文章归档
@@ -66,7 +67,7 @@ def archive(request, year, month):
         # 先获取客户端提交的信息
         # year = request.GET.get('year', None)
         # month = request.GET.get('month', None)
-        article_list = Article.objects.filter(date_publish__icontains=year+'-'+month)
+        article_list = Article.objects.filter(date_publish__icontains=year+'-'+month, is_publish=True)
         article_list = getPage(request, article_list)
     except Exception as e:
         logger.error(e)
@@ -80,7 +81,8 @@ def tag(request, tid):
             tag = Tag.objects.get(pk=tid)
         except Tag.DoesNotExist:
             return render(request, 'failure.html', {'reason': '标签不存在'})
-        article_list = Article.objects.filter(tag=tag)
+        # article_list = Article.objects.filter(tag=tag)
+        article_list = Article.objects.filter(tag=tag, is_publish=True)
         article_list = getPage(request, article_list)
     except Exception as e:
         logger.error(e)
@@ -218,7 +220,8 @@ def category(request, cid):
             category = Category.objects.get(pk=cid)
         except Category.DoesNotExist:
             return render(request, 'failure.html', {'reason': '分类不存在'})
-        article_list = Article.objects.filter(category=category)
+        # article_list = Article.objects.filter(category=category)
+        article_list = Article.objects.filter(category=category, is_publish=True)
         article_list = getPage(request, article_list)
     except Exception as e:
         logger.error(e)
@@ -246,7 +249,8 @@ def list_archive(request):
     """
     try:
         # 分页获取归档文章列表 名字必须为article_list，因为分页页面是按article_list变量抽象的
-        article_list = Article.objects.all()
+        # article_list = Article.objects.all()
+        article_list = Article.objects.filter(is_publish=True)
         article_list = getPage(request, article_list)
         current_menu = 'list_archive'
     except Exception as e:

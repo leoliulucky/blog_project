@@ -74,6 +74,7 @@ class Article(models.Model):
     category = models.ForeignKey(Category, blank=True, null=True, verbose_name='分类', on_delete = models.CASCADE)
     tag = models.ManyToManyField(Tag, verbose_name='标签')
     show_number = models.IntegerField(unique=True, verbose_name='文章显示id,唯一索引')
+    is_publish = models.BooleanField(default=True, verbose_name='是否发布')
 
     objects = ArticleManager()
 
