@@ -3,6 +3,7 @@
 {% load myfilter %}
 {# ---标题、关键词、描述--- #}
 {% block title_description %}
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
 <title>{{ article.title }}</title>
 <meta name="keywords" content="{% for tag in article.tag.all %}{{ tag.name }},{% endfor %}" />
 <meta name="description" content="{{ article.desc }}" />
